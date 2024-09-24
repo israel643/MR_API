@@ -1,10 +1,9 @@
 import app from './src/app.js';
 import { config } from './src/config/index.js';
-import {pool, testConnection, closePool } from './src/config/db.js';
+import { testConnection, closePool } from './src/db.js';
 
 async function startServer() {
   try {
-    console.log('Iniciando servidor...');
     await testConnection();
     
     app.listen(config.port, () => {
