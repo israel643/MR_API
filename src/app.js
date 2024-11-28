@@ -11,8 +11,17 @@ import purchasePriceHistoryRouter from './services/product_Service/purchase_pric
 import salesRouter from './services/sales_Service/salesRouter';
 import movementsRouter from './services/movements_Service/movementsRouter';
 import adjustmentRouter from './services/adjustment_Service/adjustmentRouter';
+import modulesRouter from './services/module_Service/modulesRouter';
 
 const app = express();
+const cors = require('cors');
+
+// Configurar CORS
+app.use(cors({
+  origin: 'http://localhost:5173', // Permite el origen de tu app React
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Encabezados permitidos
+}));
 
 // Middlewares
 app.use(express.json());
@@ -30,11 +39,12 @@ app.use('/api/priceHistory', purchasePriceHistoryRouter);
 app.use('/api/sales', salesRouter);
 app.use('/api/movements', movementsRouter);
 app.use('/api/adjustment', adjustmentRouter);
+app.use('/api/access', modulesRouter);
 
 // Error middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Algo salió mal!');
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send('Algo salió mal!');
+// });
 
 export default app;
