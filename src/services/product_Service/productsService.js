@@ -22,20 +22,20 @@ class ProductService
         return results;
     }
 
-    async newProduct({ id_prod, cat_prod, name_prod, desc_prod, sku, precioV, UM_prod, activo, stockMin, stockMax, atributos}) 
+    async newProduct({ cat_prod, name_prod, desc_prod,marca, sku, precioV, UM_prod, activo, stockMin, stockMax, atributos}) 
     {
         const [results] = await pool.query(
-            'CALL PENDIENTE(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-            [id_prod, cat_prod, name_prod, desc_prod, sku, precioV, UM_prod, activo, stockMin, stockMax, atributos]
+            'CALL sp_newProduct(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+            [cat_prod, name_prod, desc_prod, marca, sku, precioV, UM_prod, activo, stockMin, stockMax, atributos]
         );
         return results;
     }
 
-    async updateProduct({ id_prod, cat_prod, name_prod, desc_prod, sku, precioV, UM_prod, activo, stockMin, stockMax, atributos}) 
+    async updateProduct({ id_prod, cat_prod, name_prod, desc_prod, marca_,  sku_, precioV, UM_prod, activo, stockMin, stockMax, atributos}) 
     {
         const [results] = await pool.query(
-            'CALL updateProd(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-            [id_prod, cat_prod, name_prod, desc_prod, sku, precioV, UM_prod, activo, stockMin, stockMax, atributos]
+            'CALL updateProd(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+            [id_prod, cat_prod, name_prod, desc_prod, marca_, sku_, precioV, UM_prod, activo, stockMin, stockMax, atributos]
         );
         return results;
     }
