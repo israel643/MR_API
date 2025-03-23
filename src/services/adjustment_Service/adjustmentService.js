@@ -4,11 +4,12 @@ class InventoryAdjustmentService {
 
     // Insertar un ajuste
     async insertInventoryAdjustment({ saleId, adjustmentDate, reason, responsible, comment }) {
+        
         const [result] = await pool.query(
             'CALL sp_insert_inventory_adjustment(?, ?, ?, ?, ?)',
             [saleId, adjustmentDate, reason, responsible, comment]
         );
-        return result;
+        return result[0];
     }
 
     // Obtener todos los ajustes de inventario

@@ -8,7 +8,8 @@ const pool = mysql.createPool({
   database: config.database.name,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  timezone: "America/Mexico_City", 
 });
 
 async function testConnection() {

@@ -11,7 +11,7 @@ router.delete('/:idAdjustment', adjustmentController.deleteInventoryAdjustment);
 
 router.post('/:idAdjustment/details', adjustmentDetailsController.addAdjustmentDetail);
 router.get('/:idAdjustment/details', adjustmentDetailsController.getAdjustmentDetailsByAdjustment);
-router.put('/:idAdjustment/:detail_id', adjustmentDetailsController.updateAdjustmentDetail);
-router.delete('/:idAdjustment/:detail_id', adjustmentDetailsController.deleteAdjustmentDetail);
+router.put('/:idAdjustment/details/:detail_id', adjustmentDetailsController.updateAdjustmentDetail);
+router.delete('/details/:detail_id', adjustmentDetailsController.deleteAdjustmentDetail);
 
 export default router;

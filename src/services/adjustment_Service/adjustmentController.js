@@ -10,10 +10,7 @@ export const addInventoryAdjustment = async (req, res) => {
             responsible : req.body.responsible,
             comment : req.body.comment
         });
-
-        return result.affectedRows === 0 
-            ? res.status(404).json({ message: 'Error al agregar el ajuste de inventario.' }) 
-            : res.json({ message: 'Ajuste de inventario agregado correctamente.' });
+        res.json(result);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
